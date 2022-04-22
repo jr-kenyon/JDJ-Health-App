@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JDJ Health</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome to JDJ Health</string>
+    <string name="register">Register</string>
+</resources>
