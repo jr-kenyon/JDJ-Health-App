@@ -31,19 +31,54 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(password.equals("")) {
-            sendAlert(this, "Must enter a Username");
+            sendAlert(this, "Must enter a Password");
             return;
         }
 
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        String passKey = preferences.getString("username", "");
+        String passKey = preferences.getString(username, "");
 
-        if(passKey.equals(password)) {
+        if(passKey.equals("")) {
+            sendAlert(this, "Username does not Exist");
             return;
         }
-        else {
-            sendAlert(this, "Incorrect password");
+
+        if(!passKey.equals(password)) {
+            sendAlert(this, "Incorrect Password");
             return;
         }
+        else{
+            return;
+        }
+    }
+
+    public void onRegisterClicked(View view) {
+        TextView usernameView = findViewById(R.id.tvUsername);
+        TextView passwordView = findViewById(R.id.tvPassword);
+
+        String username = usernameView.getText().toString();
+        String password = passwordView.getText().toString();
+
+        if(username.equals("")) {
+            sendAlert(this, "Must enter a Username");
+            return;
+        }
+
+        if(password.equals("")) {
+            sendAlert(this, "Must enter a Password");
+            return;
+        }
+
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+
+        String passKey = preferences.getString(username, "");
+        if(!passKey.equals("")) {
+            sendAlert(this, "Username already exists");
+        }
+        else{
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(username, password);
+        }
+
     }
 }

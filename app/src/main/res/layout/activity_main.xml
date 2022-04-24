@@ -72,6 +72,7 @@
         android:layout_marginEnd="153dp"
         android:layout_marginBottom="177dp"
         android:text="@string/register"
+        android:onClick="onRegisterClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
