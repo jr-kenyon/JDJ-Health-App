@@ -4,6 +4,7 @@ import static com.example.jdjhealth.Tools.sendAlert;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         else{
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
             return;
         }
     }
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString(username, password);
+
+            editor.apply();
         }
 
     }
