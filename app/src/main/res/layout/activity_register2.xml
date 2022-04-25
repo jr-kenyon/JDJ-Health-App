@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="44dp"
+        android:onClick="onSubmitButtonClicked"
         android:text="@string/strBtnSubmit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -37,25 +39,25 @@
         android:id="@+id/tvAccountName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="102dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="101dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/strAccountName"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount" />
 
     <EditText
         android:id="@+id/tvAccountEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="102dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="@string/strEmail"
         android:inputType="textEmailAddress"
@@ -69,43 +71,75 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="105dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/strFitbit_username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvFitBitPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFitBitLogin" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tvFitBitPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="13dp"
         android:layout_marginEnd="105dp"
+        android:layout_marginBottom="27dp"
         android:ems="10"
         android:hint="@string/strFitbit_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterSubmit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFitBitUsername" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvFitBitLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="113dp"
         android:layout_marginEnd="110dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/strFitbit_login"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/tvFitBitUsername"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/tvAccountUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="101dp"
+        android:ems="10"
+        android:hint="@string/strAccountUsername"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAccountEmail" />
+
+    <EditText
+        android:id="@+id/tvAccountPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="101dp"
+        android:ems="10"
+        android:hint="@string/strAccountPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAccountUsername" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

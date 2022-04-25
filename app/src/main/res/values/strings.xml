@@ -22,4 +22,6 @@
     <string name="strFitbit_username">FitBit Username</string>
     <string name="strEmail">Email</string>
     <string name="strAccountName">Name</string>
+    <string name="strAccountPassword">Password</string>
+    <string name="strAccountUsername">Username</string>
 </resources>

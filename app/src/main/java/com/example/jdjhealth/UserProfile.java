@@ -12,6 +12,7 @@ public class UserProfile {
         this.fbUsername = fbUsername;
         this.fbPassword = fbPassword;
     }
+
     public String getUsername(){
         return this.username;
     }

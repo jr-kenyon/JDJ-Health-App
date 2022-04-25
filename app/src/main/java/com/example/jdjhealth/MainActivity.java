@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -37,14 +40,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        String passKey = preferences.getString(username, "");
+        Gson gson = new Gson();
+        String json = preferences.getString(username, "");
 
-        if(passKey.equals("")) {
-            sendAlert(this, "Username does not Exist");
+        if(json.equals("")) {
+            sendAlert(this, "Username is not registered");
             return;
         }
 
-        if(!passKey.equals(password)) {
+        UserProfile user;
+        try{
+            user = gson.fromJson(json, UserProfile.class);
+        }
+        catch (JsonSyntaxException e){
+            sendAlert(this, "json error");
+            return;
+        }
+
+        if(!user.getPassword().equals(password)) {
             sendAlert(this, "Incorrect Password");
             return;
         }
@@ -56,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onRegisterClicked(View view) {
+        /*
         TextView usernameView = findViewById(R.id.tvUsername);
         TextView passwordView = findViewById(R.id.tvPassword);
 
         String username = usernameView.getText().toString();
         String password = passwordView.getText().toString();
+
 
         if(username.equals("")) {
             sendAlert(this, "Must enter a Username");
@@ -84,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
             editor.apply();
         }
+         */
 
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
 }
