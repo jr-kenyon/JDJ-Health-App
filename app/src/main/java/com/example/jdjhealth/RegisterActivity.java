@@ -33,15 +33,15 @@ public class RegisterActivity extends AppCompatActivity {
         String fbPassword = fbPasswordView.getText().toString();
 
         UserProfile user = new UserProfile(username, password, name, email, fbUsername, fbPassword);
+        UserProfileDao userProfileDao = UserProfileDatabase.getSingleton(this).userProfileDao();
 
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(user);
-        editor.putString(username, json);
-        editor.apply();
-
-        finish();
+        UserProfile fromDb = userProfileDao.get(user.getUsername());
+        if(fromDb == null) {
+            Tools.sendAlert(this, "There already exists a user with this username");
+        }
+        else {
+            userProfileDao.insert(user);
+            finish();
+        }
     }
 }

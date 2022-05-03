@@ -39,68 +39,24 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = preferences.getString(username, "");
+        UserProfileDao dao = UserProfileDatabase.getSingleton(this).userProfileDao();
+        UserProfile user = dao.get(username);
 
-        if(json.equals("")) {
+        if(user == null) {
             sendAlert(this, "Username is not registered");
-            return;
-        }
-
-        UserProfile user;
-        try{
-            user = gson.fromJson(json, UserProfile.class);
-        }
-        catch (JsonSyntaxException e){
-            sendAlert(this, "json error");
             return;
         }
 
         if(!user.getPassword().equals(password)) {
             sendAlert(this, "Incorrect Password");
-            return;
         }
         else{
             Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
-            return;
         }
     }
 
     public void onRegisterClicked(View view) {
-        /*
-        TextView usernameView = findViewById(R.id.tvUsername);
-        TextView passwordView = findViewById(R.id.tvPassword);
-
-        String username = usernameView.getText().toString();
-        String password = passwordView.getText().toString();
-
-
-        if(username.equals("")) {
-            sendAlert(this, "Must enter a Username");
-            return;
-        }
-
-        if(password.equals("")) {
-            sendAlert(this, "Must enter a Password");
-            return;
-        }
-
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-
-        String passKey = preferences.getString(username, "");
-        if(!passKey.equals("")) {
-            sendAlert(this, "Username already exists");
-        }
-        else{
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(username, password);
-
-            editor.apply();
-        }
-         */
-
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
